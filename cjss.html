@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Website bị khóa</title>
+  <style>
+    :root{
+      --bg:#f4f7fb;
+      --card:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --shadow: 0 8px 30px rgba(17,24,39,0.06);
+    }
+    html,body{height:100%;margin:0;}
+    body{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(180deg,var(--bg),#eef2f7);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    .card{
+      background:var(--card);
+      padding:28px;
+      border-radius:14px;
+      box-shadow:var(--shadow);
+      text-align:center;
+      max-width:720px;
+      width:90%;
+    }
+    .lock {
+      font-size:48px;
+      line-height:1;
+      margin-bottom:10px;
+    }
+    h1{
+      margin:0 0 6px;
+      font-size:clamp(20px,4vw,34px);
+      color:var(--text);
+    }
+    p{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+    }
+    @media (max-width:420px){
+      .card{padding:20px;border-radius:10px;}
+      .lock{font-size:40px;}
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="status" aria-live="polite">
+    <div class="lock" aria-hidden="true">🔒</div>
+    <h1>Website đã bị chủ sở hữu khóa</h1>
+    <p>Nếu bạn là chủ sở hữu, vui lòng liên hệ với nhà cung cấp lưu trữ hoặc quản trị viên để biết thêm chi tiết.</p>
+  </main>
+</body>
+</html>
