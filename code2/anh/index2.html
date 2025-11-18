@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Matrix + Image Slider</title>
+<title>Nhạc ẩn tự động</title>
+<title>Chạm vào màn hình</title>
+
+<style>
+  /* Chữ hiển thị giữa màn hình, mờ */
+  #overlay-text {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 70px;
+    color: rgba(255, 255, 255, 0.5); /* chữ mờ */
+    text-align: center;
+    pointer-events: none; /* cho phép click xuống dưới */
+    z-index: 9999;
+    font-family: sans-serif;
+  }
+
+  body {
+    margin: 0;
+    height: 100vh;
+    background-color: black;
+  }
+</style>
+</head>
+<body>
+
+<div id="overlay-text">Hãy chạm vào màn hình</div>
+
+<script>
+  // Khi người dùng click hoặc chạm vào màn hình, ẩn chữ
+  function hideText() {
+    document.getElementById('overlay-text').style.display = 'none';
+    document.removeEventListener('click', hideText);
+    document.removeEventListener('touchstart', hideText);
+  }
+
+  document.addEventListener('click', hideText);
+  document.addEventListener('touchstart', hideText);
+</script>
+
+<body>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var audio = document.createElement('audio');
+    audio.src = 'song.mp3';  // file nhạc của bạn
+    audio.loop = true;
+    audio.style.display = 'none';
+    document.body.appendChild(audio);
+
+    function playMusic() {
+        audio.play().catch(function(e){
+            console.log("Trình duyệt chặn autoplay nhạc nếu không có tương tác.");
+        });
+        document.removeEventListener('click', playMusic);
+        document.removeEventListener('touchstart', playMusic);
+    }
+
+    // Phát nhạc khi người dùng click hoặc chạm lần đầu
+    document.addEventListener('click', playMusic);
+    document.addEventListener('touchstart', playMusic);
+});
+</script>
+
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: #000;
+        font-family: monospace;
+        height: 100%;
+    }
+
+    canvas {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .center-text {
+        position: fixed;
+        top: 5%;
+        width: 100%;
+        text-align: center;
+        font-size: 110px;
+        font-weight: bold;
+        z-index: 2;
+        color: white;
+        text-shadow: 0 0 10px #fff, 0 0 25px #fff;
+        letter-spacing: 5px;
+        line-height: 120px;
+    }
+
+    /* IMAGE SLIDER */
+    .image-container {
+        position: absolute;
+        top: 60%;
+        left: 0;
+        width: 100%;
+        transform: translateY(-50%);
+        overflow: hidden;
+        height: 620px; /* TĂNG CHIỀU CAO để chứa 2 hàng */
+        z-index: 3;
+    }
+
+
+    .image-row {
+        display: flex;
+        position: absolute;
+        left: 0;
+        gap: 20px;
+    }
+
+    /* Định vị hàng thứ nhất ở trên */
+    #row1 {
+        top: 0; 
+    }
+
+    /* Định vị hàng thứ hai ở dưới */
+    #row2 {
+        bottom: 0; 
+    }
+
+    .image-row img {
+        width: 400px;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 12px;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- MATRIX CANVAS -->
+<canvas id="matrix"></canvas>
+
+<div class="center-text">
+    HAPPY TEACHER'S DAY
+</div>
+
+<!-- IMAGE SLIDER -->
+<div class="image-container">
+    <!-- Dãy hình 1 (Chạy trái) -->
+    <div class="image-row" id="row1">
+        <img src="img1.jpg">
+        <img src="img2.jpg">
+        <img src="img3.jpg">
+        <img src="img4.jpg">
+        <img src="img5.jpg">
+        <img src="img6.jpg">
+        <img src="img7.jpg">
+        <img src="img8.jpg">
+        <img src="img9.jpg">    
+        <img src="img10.jpg">
+        <img src="img11.jpg">
+        <img src="img12.jpg">
+        <img src="img13.jpg">
+        <img src="img14.jpg">
+        <img src="img15.jpg">
+        <img src="img16.jpg">
+        <img src="img17.jpg">
+        <img src="img18.jpg">
+        <img src="img19.jpg">
+        <img src="img20.jpg">
+        <img src="img21.jpg">
+        <img src="img22.jpg">
+        <img src="img23.jpg">
+        <img src="img24.jpg">
+        <img src="img25.jpg">
+        <img src="img26.jpg">
+        <img src="img27.jpg">
+        <img src="img28.jpg">
+        <img src="img29.jpg">
+        <img src="img30.jpg">
+        <img src="img31.jpg">
+        <img src="img32.jpg">
+        <img src="img33.jpg">
+        <img src="img34.jpg">   
+        <img src="img35.jpg">
+        <img src="img36.jpg">
+        <img src="img37.jpg">
+        <img src="img38.jpg">
+        <!-- Duplicate images for seamless loop -->
+        <img src="img1.jpg">
+        <img src="img2.jpg">
+        <img src="img3.jpg">
+        <img src="img4.jpg">
+        <img src="img5.jpg">
+        <img src="img6.jpg">
+         <img src="img7.jpg">
+        <img src="img8.jpg">
+        <img src="img9.jpg">    
+        <img src="img10.jpg">
+        <img src="img11.jpg">
+        <img src="img12.jpg">
+        <img src="img13.jpg">
+        <img src="img14.jpg">
+        <img src="img15.jpg">
+        <img src="img16.jpg">
+        <img src="img17.jpg">
+        <img src="img18.jpg">
+        <img src="img19.jpg">
+        <img src="img20.jpg">
+        <img src="img21.jpg">
+        <img src="img22.jpg">
+        <img src="img23.jpg">
+        <img src="img24.jpg">
+        <img src="img25.jpg">
+        <img src="img26.jpg">
+        <img src="img27.jpg">
+        <img src="img28.jpg">
+        <img src="img29.jpg">
+        <img src="img30.jpg">
+        <img src="img31.jpg">
+        <img src="img32.jpg">
+        <img src="img33.jpg">
+        <img src="img34.jpg">   
+        <img src="img35.jpg">
+        <img src="img36.jpg">
+        <img src="img37.jpg">
+        <img src="img38.jpg">
+    </div>
+
+    <!-- Dãy hình 2 (Chạy phải - Thêm mới) -->
+     <div class="image-row" id="row2">
+        <img src="img1.jpg">
+        <img src="img2.jpg">
+        <img src="img3.jpg">
+        <img src="img4.jpg">
+        <img src="img5.jpg">
+        <img src="img6.jpg">
+        <img src="img7.jpg">
+        <img src="img8.jpg">
+        <img src="img9.jpg">    
+        <img src="img10.jpg">
+        <img src="img11.jpg">
+        <img src="img12.jpg">
+        <img src="img13.jpg">
+        <img src="img14.jpg">
+        <img src="img15.jpg">
+        <img src="img16.jpg">
+        <img src="img17.jpg">
+        <img src="img18.jpg">
+        <img src="img19.jpg">
+        <img src="img20.jpg">
+        <img src="img21.jpg">
+        <img src="img22.jpg">
+        <img src="img23.jpg">
+        <img src="img24.jpg">
+        <img src="img25.jpg">
+        <img src="img26.jpg">
+        <img src="img27.jpg">
+        <img src="img28.jpg">
+        <img src="img29.jpg">
+        <img src="img30.jpg">
+        <img src="img31.jpg">
+        <img src="img32.jpg">
+        <img src="img33.jpg">
+        <img src="img34.jpg">   
+        <img src="img35.jpg">
+        <img src="img36.jpg">
+        <img src="img37.jpg">
+        <img src="img38.jpg">
+        <!-- Duplicate images for seamless loop -->
+        <img src="img1.jpg">
+        <img src="img2.jpg">
+        <img src="img3.jpg">
+        <img src="img4.jpg">
+        <img src="img5.jpg">
+        <img src="img6.jpg">
+         <img src="img7.jpg">
+        <img src="img8.jpg">
+        <img src="img9.jpg">    
+        <img src="img10.jpg">
+        <img src="img11.jpg">
+        <img src="img12.jpg">
+        <img src="img13.jpg">
+        <img src="img14.jpg">
+        <img src="img15.jpg">
+        <img src="img16.jpg">
+        <img src="img17.jpg">
+        <img src="img18.jpg">
+        <img src="img19.jpg">
+        <img src="img20.jpg">
+        <img src="img21.jpg">
+        <img src="img22.jpg">
+        <img src="img23.jpg">
+        <img src="img24.jpg">
+        <img src="img25.jpg">
+        <img src="img26.jpg">
+        <img src="img27.jpg">
+        <img src="img28.jpg">
+        <img src="img29.jpg">
+        <img src="img30.jpg">
+        <img src="img31.jpg">
+        <img src="img32.jpg">
+        <img src="img33.jpg">
+        <img src="img34.jpg">   
+        <img src="img35.jpg">
+        <img src="img36.jpg">
+        <img src="img37.jpg">
+        <img src="img38.jpg">
+    </div>
+</div>
+
+<script>
+
+/* MATRIX RAIN (Giữ nguyên) */
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const letters = "HAPPYTEACHERDAYLOVE".split("");
+const fontSize = 18;
+const columns = Math.floor(canvas.width / fontSize);
+const drops = [];
+
+for (let i = 0; i < columns; i++) {
+    drops[i] = 1;
+}
+
+function draw() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.07)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.font = fontSize + "px monospace";
+
+    for (let i = 0; i < drops.length; i++) {
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillStyle = `hsl(${(i * 7 + Date.now() / 20) % 360}, 100%, 60%)`;
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.97) drops[i] = 0;
+        drops[i]++;
+    }
+
+    requestAnimationFrame(draw);
+}
+
+draw();
+
+window.onresize = () => location.reload();
+
+
+/* IMAGE SLIDER (ĐÃ CHỈNH SỬA) */
+// Lấy tham chiếu đến cả hai hàng
+let row1 = document.getElementById("row1");
+let row2 = document.getElementById("row2");
+
+let position1 = 0;
+let position2 = 0; 
+let speed1 = 1; // Tốc độ hàng 1 (chạy trái)
+let speed2 = 0.8; // Tốc độ hàng 2 (chạy phải)
+
+function loop() {
+    // --- Hàng 1: Chạy về bên trái ---
+    position1 -= speed1;
+    // Khi ra khỏi màn hình ở bên trái, reset về 0
+    if (position1 <= -row1.offsetWidth / 2) {
+        position1 = 0;
+    }
+    row1.style.transform = `translateX(${position1}px)`;
+
+
+    // --- Hàng 2: Chạy về bên phải (ngược chiều) ---
+    position2 += speed2; 
+    // Khi ra khỏi màn hình ở bên phải, reset về vị trí âm (bắt đầu từ ngoài cùng bên trái)
+    if (position2 >= 0) {
+        position2 = -row2.offsetWidth / 2; 
+    }
+    row2.style.transform = `translateX(${position2}px)`;
+
+    requestAnimationFrame(loop);
+}
+
+// Khi tải trang xong thì bắt đầu vòng lặp chuyển động
+window.onload = loop;
+</script>
+
+</body>
+</html>
